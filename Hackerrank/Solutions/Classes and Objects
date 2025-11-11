@@ -1,0 +1,64 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <cassert>
+using namespace std;
+
+class Student {
+private:
+    // Array to store the scores for the 5 subjects/exams
+    int scores[5];
+
+public:
+    /**
+     * @brief Reads 5 integer scores from standard input and stores them.
+     */
+    void input() {
+        // Read 5 scores one by one.
+        for (int i = 0; i < 5; ++i) {
+            // Using cin for C++ standard input
+            cin >> scores[i];
+        }
+    }
+
+    /**
+     * @brief Calculates and returns the sum of all 5 stored scores.
+     * @return The total score as an integer.
+     */
+    int calculateTotalScore() {
+        int total = 0;
+        // Sum up all 5 scores.
+        for (int i = 0; i < 5; ++i) {
+            total += scores[i];
+        }
+        return total;
+    }
+};
+int main() {
+    int n; // number of students
+    cin >> n;
+    Student *s = new Student[n]; // an array of n students
+    
+    for(int i = 0; i < n; i++){
+        s[i].input();
+    }
+
+    // calculate kristen's score
+    int kristen_score = s[0].calculateTotalScore();
+
+    // determine how many students scored higher than kristen
+    int count = 0; 
+    for(int i = 1; i < n; i++){
+        int total = s[i].calculateTotalScore();
+        if(total > kristen_score){
+            count++;
+        }
+    }
+
+    // print result
+    cout << count;
+    
+    return 0;
+}

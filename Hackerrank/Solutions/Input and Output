@@ -1,0 +1,14 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int n,o,s;
+    cin >> s >> n >> o;
+  cout << s+n+o;
+    return 0;
+}

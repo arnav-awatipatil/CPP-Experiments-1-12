@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    
+    int n;
+    // Read the number of integers
+    cin >> n;
+    
+    // Create a vector of integers with size 'n'
+    vector<int> arr(n);
+    
+    // Loop 'n' times to read each integer into the vector
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    // Loop backward from the last element (n-1) to the first (0)
+    for (int i = n - 1; i >= 0; i--) {
+        // Print the element followed by a space
+        cout << arr[i] << " ";
+    }
+    
+    return 0;
+}    
+

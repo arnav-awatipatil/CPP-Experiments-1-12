@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <exception>
+using namespace std;
+
+/* Define the exception here */
+class BadLengthException : public std::exception {
+private:
+    // We need a member variable to store the message string
+    // This ensures the string data persists as long as the exception object
+    std::string message;
+
+public:
+    // The constructor takes the invalid length 'n'
+    BadLengthException(int n) {
+        // Use a stringstream to convert the integer 'n' to a string
+        std::stringstream ss;
+        ss << n;
+        
+        // Store the converted string in our member variable
+        message = ss.str();
+    }
+
+    // Override the standard exception's what() method
+    // 'const noexcept override' are important keywords
+    virtual const char* what() const noexcept override {
+        // Return a C-style string (const char*) from our std::string
+        return message.c_str();
+    }
+};
+
+bool checkUsername(string username) {
+	bool isValid = true;
+	int n = username.length();
+	if(n < 5) {
+		throw BadLengthException(n);
+	}
+	for(int i = 0; i < n-1; i++) {
+		if(username[i] == 'w' && username[i+1] == 'w') {
+			isValid = false;
+		}
+	}
+	return isValid;
+}
+
+int main() {
+	int T; cin >> T;
+	while(T--) {
+		string username;
+		cin >> username;
+		try {
+			bool isValid = checkUsername(username);
+			if(isValid) {
+				cout << "Valid" << '\n';
+			} else {
+				cout << "Invalid" << '\n';
+			}
+		} catch (BadLengthException e) {
+			cout << "Too short: " << e.what() << '\n';
+		}
+	}
+	return 0;
+}

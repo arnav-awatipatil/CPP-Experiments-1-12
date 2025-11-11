@@ -1,0 +1,134 @@
+#include <iostream>
+#include <sstream>
+#include <string> // Added for the string class
+using namespace std;
+
+/**
+ * @class student
+ * @brief Stores details for a student: age, name, and standard.
+ *
+ * This class encapsulates student data and provides public methods
+ * (setters and getters) to access and modify the private data.
+ * It also includes a to_string() method to format the data.
+ */
+class student {
+private:
+    // Private member variables to store the student's data
+    int age;
+    int standard;
+    string first_name;
+    string last_name;
+
+public:
+    // --- Setter Methods ---
+    // Used to set the values of the private members
+
+    /**
+     * @brief Sets the student's age.
+     * @param a The age of the student.
+     */
+    void set_age(int a) {
+        age = a;
+    }
+
+    /**
+     * @brief Sets the student's standard (grade).
+     * @param s The standard of the student.
+     */
+    void set_standard(int s) {
+        standard = s;
+    }
+
+    /**
+     * @brief Sets the student's first name.
+     * @param fn The first name of the student.
+     */
+    void set_first_name(string fn) {
+        first_name = fn;
+    }
+
+    /**
+     * @brief Sets the student's last name.
+     * @param ln The last name of the student.
+     */
+    void set_last_name(string ln) {
+        last_name = ln;
+    }
+
+    // --- Getter Methods ---
+    // Used to retrieve the values of the private members
+
+    /**
+     * @brief Gets the student's age.
+     * @return The age of the student.
+     */
+    int get_age() {
+        return age;
+    }
+
+    /**
+     * @brief Gets the student's standard.
+     * @return The standard of the student.
+     */
+    int get_standard() {
+        return standard;
+    }
+
+    /**
+     * @brief Gets the student's first name.
+     * @return The first name of the student.
+     */
+    string get_first_name() {
+        return first_name;
+    }
+
+    /**
+     * @brief Gets the student's last name.
+     * @return The last name of the student.
+     */
+    string get_last_name() {
+        return last_name;
+    }
+
+    // --- Utility Method ---
+
+    /**
+     * @brief Returns a comma-separated string of all member variables.
+     * @return A formatted string (e.g., "15,john,doe,10").
+     */
+    string to_string() {
+        stringstream ss;
+        // Use stringstream to build the formatted string
+        ss << age << "," << first_name << "," << last_name << "," << standard;
+        return ss.str();
+    }
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    // Read the input
+    cin >> age >> first_name >> last_name >> standard;
+    
+    // Create an instance of the student class
+    // NOTE: Corrected 'Student' to 'student' to match the class definition.
+    student st; 
+    
+    // Set the data using the setter methods
+    st.set_age(age);
+    st.set_standard(standard);
+    st.set_first_name(first_name);
+    st.set_last_name(last_name);
+    
+    // Print the data using the getter methods
+    cout << st.get_age() << "\n";
+    cout << st.get_last_name() << ", " << st.get_first_name() << "\n";
+    cout << st.get_standard() << "\n";
+    
+    // Print the formatted string from to_string()
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}

@@ -1,0 +1,50 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    // N: number of variable-length arrays (rows)
+    // Q: number of queries
+    int N, Q;
+    
+    // Read N and Q from the first line
+    if (!(cin >> N >> Q)) {
+        return 1; // Handle potential input failure
+    }
+    
+    // Declare the jagged array: a vector of vectors of integers.
+    // The outer vector has N elements, and each element is an inner vector<int>.
+    vector<vector<int>> jagged_array(N);
+    
+    // 1. Read and build the N variable-length arrays
+    for (int i = 0; i < N; ++i) {
+        int k; // k: size of the current array
+        cin >> k;
+        
+        // Resize the current inner vector (row i) to hold k elements
+        jagged_array[i].resize(k);
+        
+        // Read the k elements into the current inner vector
+        for (int j = 0; j < k; ++j) {
+            cin >> jagged_array[i][j];
+        }
+    }
+    
+    // 2. Process the Q queries
+    for (int q = 0; q < Q; ++q) {
+        int i, j; // i: index in array A (row index), j: index in the inner array (column index)
+        
+        // Read the query indices i and j
+        cin >> i >> j;
+        
+        // Access the element A[i][j] and print its value on a new line
+        // We use the double-bracket array subscript operator to access the element.
+        cout << jagged_array[i][j] << "\n";
+    }
+    
+    return 0;
+}

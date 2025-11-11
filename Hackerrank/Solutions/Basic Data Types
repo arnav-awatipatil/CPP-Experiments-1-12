@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cstdio> // Include <cstdio> for scanf and printf
+using namespace std;
+
+int main() {
+    // 1. Variable Declarations
+    int a;
+    long b;
+    char c;
+    float d;
+    double e;
+    
+    // 2. Reading Input using scanf
+    // The input format is expected to be: int long char float double
+    // Format Specifiers: %d %ld %c %f %lf
+    // Note: The format string "%d %ld %c %f %lf" is used to read all five values.
+    scanf("%d %ld %c %f %lf", &a, &b, &c, &d, &e);
+    
+    // 3. Printing Output using printf
+    // Print each variable on a new line. 
+    // For float and double, we'll use "%.3f" and "%.9lf" respectively 
+    // to show a reasonable number of decimal places (e.g., 3 for float, 9 for double)
+    
+    printf("%d\n", a);
+    printf("%ld\n", b);
+    printf("%c\n", c);
+    printf("%.3f\n", d); // Printing float with 3 decimal places
+    printf("%.9lf\n", e); // Printing double with 9 decimal places
+    
+    return 0;
+}
